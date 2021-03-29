@@ -35,6 +35,6 @@ else
 {
 	
 	"message": "Fake Card Number Verified, please correct"
-}]'/>
+}]' />
 	</flow>
 </mule>
