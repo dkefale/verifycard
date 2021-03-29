@@ -28,8 +28,8 @@
 				 <cloudHubDeployment>
 				  <uri>https://anypoint.mulesoft.com</uri>
 			      <muleVersion>4.3.0</muleVersion>
-			      <username>${username}</username>
-			      <password>${password}</password>
+			      <username>DanMarch2021</username>
+			      <password>Dan@salesforce19</password>
 			      <applicationName>${cloudHub.appName}</applicationName>
 			      <environment>${clodHub.environment}</environment>
 			      <workers>1</workers>
