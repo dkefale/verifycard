@@ -29,12 +29,14 @@ output application/json
 ---
 if(payload)
 {
-	"message": "Valid Card Number Verified, found correct"
+	"message": "Valid Card Number Verified, found correct",
+	"status":"valid"
 }
 else
 {
 	
-	"message": "Fake Card Number Verified, please correct"
+	"message": "Fake Card Number Verified, please correct",
+	"status":"invalid"
 }]' />
 	</flow>
 </mule>
