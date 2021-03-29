@@ -26,12 +26,11 @@
 				<extensions>true</extensions>
 				<configuration>
 				 <cloudHubDeployment>
-				  <uri>https://anypoint.mulesoft.com</uri>
-			      <muleVersion>4.3.0</muleVersion>
+				  <muleVersion>4.3.0</muleVersion>
 			      <username>DanMarch2021</username>
 			      <password>Dan@salesforce19</password>
-			      <applicationName>${cloudHub.appName}</applicationName>
-			      <environment>${clodHub.environment}</environment>
+			      <applicationName>verifyCard-service</applicationName>
+			      <environment>Sandbox</environment>
 			      <workers>1</workers>
 			      <workerType>Micro</workerType>
 			      <objectStoreV2>true</objectStoreV2>			     
