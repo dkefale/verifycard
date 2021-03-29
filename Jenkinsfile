@@ -16,8 +16,8 @@ pipeline
 				
 			stage('Perform regression Testing') {
 				steps{
-					bat 'cd C:\Users\dkefale\AppData\Roaming\npm'
-					bat 'newman run D:\Temp\newman\CreditCardValidation.postman_collection.json -r htmlextra --reporter-htmlextra-export D:\Temp\newman --reporter-htmlextra-darktheme'
+					bat 'newman run D:\Temp\newman\CreditCardValidation.postman_collection.json'
 										}
 				}
 	}
+}
