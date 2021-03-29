@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:java="http://www.mulesoft.org/schema/mule/java"
+	xmlns:validation="http://www.mulesoft.org/schema/mule/validation"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd
+http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f7500767-d3f6-48cb-86a2-6ce05d1c11f6" >
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
+	<validation:config name="Validation_Config" doc:name="Validation Config" doc:id="dc8ef404-f7d8-4123-a8ce-cbe5d1449bed"/>
+	<configuration-properties doc:name="Configuration properties" doc:id="1a45f169-1455-44a2-8b9b-3a223f5cc559" file="dev.yaml" />
+	<flow name="verifycarddigitFlow" doc:id="b9af699f-92ec-4685-8be4-3c74bc8e9d3a" >
+		<http:listener doc:name="Listener" doc:id="33ef9986-38d4-49fd-8392-14bb1a13e5e9" config-ref="HTTP_Listener_config" path="/digit" outputMimeType="application/json">
+			<http:response statusCode="200" reasonPhrase="Valid Card Size" />
+			<http:error-response statusCode="401" reasonPhrase="Invalid Card Size" />
+		</http:listener>
+		<try doc:name="Try" doc:id="ab6e4a9f-adf4-4539-8270-2a113cc61d23" >
+			<validation:validate-size doc:name="Validate size" doc:id="809ac8b6-f10a-4b99-9f0a-0c50f4846daa" config-ref="Validation_Config" value="#[payload.card]" min="#[16]" max="#[16]" message="Please correct the card Number" />
+		</try>
+		<logger level="INFO" doc:name="Logger" doc:id="5c47721a-d943-406c-bd0d-b00b8c0de9cc" message="valid credit card Number Size"/>
+		<java:invoke-static doc:name="Invoke static" doc:id="db017f9e-025b-4adb-8da1-6af2be45d107" class="card.ValidateCreditCard" method="ValidateCreditCardNumber(java.lang.String)">
+			<java:args ><![CDATA[#[arg0:payload.card]]]></java:args>
+		</java:invoke-static>
+		<set-payload doc:name="Set Payload" doc:id="832a115f-fafa-4017-847a-ce08a6a3224c" value='#[%dw 2.0
+output application/json
+---
+if(payload)
+{
+	"message": "Valid Card Number Verified, found correct"
+}
+else
+{
+	
+	"message": "Fake Card Number Verified, please correct"
+}]'/>
+	</flow>
+</mule>
