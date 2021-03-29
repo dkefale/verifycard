@@ -16,7 +16,7 @@ pipeline
 				
 			stage('Perform regression Testing') {
 				steps{
-					bat 'C:\\Users\\dkefale\\AppData\\Roaming\\npm\\newman run D:\\Temp\newman\\CreditCardValidation.postman_collection.json'
+					bat 'C:\\Users\\dkefale\\AppData\\Roaming\\npm\\newman run D:\\Temp\\newman\\CreditCardValidation.postman_collection.json'
 										}
 				}
 	}
