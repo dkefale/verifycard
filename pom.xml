@@ -26,9 +26,10 @@
 				<extensions>true</extensions>
 				<configuration>
 				 <cloudHubDeployment>
+				  <uri>https://anypoint.mulesoft.com</uri>
 			      <muleVersion>4.3.0</muleVersion>
-			      <username>${cloudHub.username}</username>
-			      <password>${cloudHub.password}</password>
+			      <username>${username}</username>
+			      <password>${password}</password>
 			      <applicationName>${cloudHub.appName}</applicationName>
 			      <environment>${clodHub.environment}</environment>
 			      <workers>1</workers>
