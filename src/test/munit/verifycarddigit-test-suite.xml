@@ -8,7 +8,7 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="verifycarddigit-test-suite.xml" />
-	<munit:test name="verifycarddigit-test-suite-verifycarddigitFlowTest" doc:id="7beb57aa-d017-43cf-b6be-d59a26450e34" description="Test">
+	<munit:test name="verifycarddigit-test-suite-verify-payloadNotNull" doc:id="7beb57aa-d017-43cf-b6be-d59a26450e34" description="Test">
 		<munit:execution >
 			<flow-ref doc:name="Flow Reference" doc:id="7636dbba-407d-4a61-a7e1-faa2f269e95b" name="verifycarddigit-test-suiteFlow"/>
 			<flow-ref doc:name="Flow-ref to verifycarddigitFlow" doc:id="43a3e78d-9569-463c-a910-3cabcb0821fc" name="verifycarddigitFlow"/>
@@ -17,7 +17,7 @@
 			<munit-tools:assert-that doc:name="Assert that" doc:id="d24c3702-d07c-4a52-9378-fbe7826e66f2" message="Payload is Null" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="verifycarddigit-test-suite-verifycarddigitFlowTest1" doc:id="cdf50a34-b5ec-4db9-ab98-f35c396422a3" description="Test">
+	<munit:test name="verifycarddigit-test-suite-verify-mediaType" doc:id="cdf50a34-b5ec-4db9-ab98-f35c396422a3" description="Test">
 		<munit:execution >
 			<flow-ref doc:name="Flow Reference" doc:id="4b009da4-7c7c-4f0e-a374-e102105f546f" name="verifycarddigit-test-suiteFlow"/>
 			<flow-ref doc:name="Flow-ref to verifycarddigitFlow" doc:id="443b8dbd-ac94-4069-8a58-d8b9b00fab59" name="verifycarddigitFlow"/>
