@@ -3,6 +3,6 @@ http:
 cloudHub:
     uri: "http://anypoint.mulesoft.com"
     appName: "validateCreditCard-service"
-    environment: "sandbox"
+    environment: "Sandbox"
 username: "DanMarch2021"
 password: "Dan@salesforce19"
